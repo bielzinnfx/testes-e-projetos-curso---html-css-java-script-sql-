@@ -1,0 +1,148 @@
+
+
+CREATE TABLE Autores (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100),
+    Nacionalidade VARCHAR(50),
+    Data_Nascimento DATE
+);
+
+CREATE TABLE Editoras (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100),
+    Cidade VARCHAR(100),
+    País VARCHAR(50)
+);
+
+CREATE TABLE Livros (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Titulo VARCHAR(200),
+    Genero VARCHAR(50),
+    Ano INT,
+    Preco DECIMAL(10,2),
+    ISBN VARCHAR(20),
+    ID_Editora INT,
+    ID_Autor INT,
+    FOREIGN KEY (ID_Editora) REFERENCES Editoras(ID),
+    FOREIGN KEY (ID_Autor) REFERENCES Autores(ID)
+);
+
+CREATE TABLE Clientes (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100),
+    Email VARCHAR(100),
+    Telefone VARCHAR(20),
+    Endereco VARCHAR(200)
+);
+
+CREATE TABLE Vendas (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Data DATE,
+    ID_Cliente INT,
+    ID_Livro INT,
+    Quantidade INT,
+    Total DECIMAL(10,2),
+    FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID),
+    FOREIGN KEY (ID_Livro) REFERENCES Livros(ID)
+);
+
+CREATE TABLE Estoque (
+    ID_Livro INT PRIMARY KEY,
+    Quantidade INT,
+    Localizacao VARCHAR(100),
+    FOREIGN KEY (ID_Livro) REFERENCES Livros(ID)
+);
+
+
+
+INSERT INTO Autores (Nome, Nacionalidade, Data_Nascimento) VALUES
+('José Silva', 'Brasileira', '1970-05-12'),
+('Maria Souza', 'Portuguesa', '1980-09-25'),
+('Carlos Lima', 'Brasileira', '1965-12-01'),
+('Ana Costa', 'Argentina', '1990-07-17');
+
+INSERT INTO Editoras (Nome, Cidade, País) VALUES
+('Editora Alfa', 'São Paulo', 'Brasil'),
+('Editora Beta', 'Lisboa', 'Portugal'),
+('Editora Gama', 'Buenos Aires', 'Argentina');
+
+INSERT INTO Livros (Titulo, Genero, Ano, Preco, ISBN, ID_Editora, ID_Autor) VALUES
+('O Sol da Meia-Noite', 'Romance', 2020, 59.90, '9781234567890', 1, 1),
+('Segredos da Floresta', 'Aventura', 2018, 39.50, '9781234567891', 2, 2),
+('Mistério na Serra', 'Suspense', 2022, 72.00, '9781234567892', 3, 3),
+('História dos Povos', 'História', 2015, 89.99, '9781234567893', 1, 4),
+('O Código do Tempo', 'Ficção Científica', 2021, 65.00, '9781234567894', 1, 1);
+
+INSERT INTO Clientes (Nome, Email, Telefone, Endereco) VALUES
+('Gabriel Moraes', 'gabriel@email.com', '11999999999', 'Rua A, São Paulo'),
+('Luciana Torres', 'luciana@email.com', '11988888888', 'Rua B, Lisboa'),
+('Pedro Henrique', 'pedro@email.com', '11977777777', 'Rua C, Porto Alegre');
+
+INSERT INTO Vendas (Data, ID_Cliente, ID_Livro, Quantidade, Total) VALUES
+('2025-06-01', 1, 1, 1, 59.90),
+('2025-06-02', 1, 3, 2, 144.00),
+('2025-06-03', 2, 2, 1, 39.50),
+('2025-06-03', 3, 1, 1, 59.90),
+('2025-06-04', 3, 5, 3, 195.00);
+
+INSERT INTO Estoque (ID_Livro, Quantidade, Localizacao) VALUES
+(1, 3, 'Estante A'),
+(2, 0, 'Estante B'),
+(3, 2, 'Estante A'),
+(4, 10, 'Estante C'),
+(5, 1, 'Estante B');
+
+
+
+
+SELECT * FROM Livros ORDER BY Titulo;
+SELECT * FROM Livros WHERE Ano > 2019;
+SELECT Genero, COUNT(*) AS Quantidade FROM Livros GROUP BY Genero;
+SELECT * FROM Livros ORDER BY Preco DESC LIMIT 5;
+SELECT * FROM Livros WHERE ID_Autor = 1;
+
+
+SELECT * FROM Autores WHERE Nacionalidade = 'Brasileira';
+SELECT * FROM Autores WHERE Data_Nascimento < '1980-01-01';
+SELECT A.Nome, COUNT(L.ID) AS Livros_Publicados FROM Autores A
+LEFT JOIN Livros L ON A.ID = L.ID_Autor GROUP BY A.ID;
+SELECT * FROM Autores WHERE ID NOT IN (SELECT ID_Autor FROM Livros);
+SELECT * FROM Autores WHERE Nome LIKE '%Silva%';
+
+
+SELECT * FROM Editoras WHERE País = 'Brasil';
+SELECT E.Nome, COUNT(L.ID) AS Total_Livros FROM Editoras E
+LEFT JOIN Livros L ON E.ID = L.ID_Editora GROUP BY E.ID;
+SELECT DISTINCT E.* FROM Editoras E
+JOIN Livros L ON E.ID = L.ID_Editora WHERE L.Ano = 2020;
+SELECT * FROM Editoras ORDER BY Nome;
+SELECT * FROM Editoras WHERE ID NOT IN (SELECT ID_Editora FROM Livros);
+
+
+SELECT * FROM Clientes ORDER BY Nome;
+SELECT DISTINCT C.* FROM Clientes C
+JOIN Vendas V ON C.ID = V.ID_Cliente WHERE V.ID_Livro = 1;
+SELECT C.Nome, COUNT(V.ID) AS Compras FROM Clientes C
+LEFT JOIN Vendas V ON C.ID = V.ID_Cliente GROUP BY C.ID;
+SELECT * FROM Clientes WHERE Endereco LIKE '%São Paulo%';
+SELECT * FROM Clientes WHERE ID NOT IN (SELECT ID_Cliente FROM Vendas);
+
+
+SELECT * FROM Vendas ORDER BY Data DESC;
+SELECT YEAR(Data) AS Ano, MONTH(Data) AS Mes, SUM(Total) AS Total_Vendido
+FROM Vendas GROUP BY YEAR(Data), MONTH(Data);
+SELECT * FROM Vendas ORDER BY Total DESC LIMIT 1;
+SELECT L.Titulo, SUM(V.Quantidade) AS Total_Vendido FROM Vendas V
+JOIN Livros L ON V.ID_Livro = L.ID GROUP BY L.ID ORDER BY Total_Vendido DESC LIMIT 3;
+SELECT SUM(Total) AS Faturamento_Total FROM Vendas;
+
+
+SELECT L.Titulo, E.Quantidade FROM Estoque E
+JOIN Livros L ON E.ID_Livro = L.ID WHERE E.Quantidade < 5;
+SELECT COUNT(*) AS Livros_Disponiveis FROM Estoque
+WHERE Localizacao = 'Estante A';
+SELECT L.Titulo FROM Livros L
+JOIN Estoque E ON L.ID = E.ID_Livro WHERE E.Quantidade = 0;
+SELECT L.Titulo, E.Quantidade FROM Estoque E
+JOIN Livros L ON E.ID_Livro = L.ID ORDER BY E.Quantidade DESC LIMIT 1;
+SELECT * FROM Livros WHERE ID NOT IN (SELECT ID_Livro FROM Estoque);
