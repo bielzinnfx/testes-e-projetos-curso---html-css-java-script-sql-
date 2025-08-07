@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jogo de Adivinhação</title>
+  <style>
+    #mensagem {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Jogo: Adivinhe o número (1 a 100)</h2>
+  <button onclick="jogar()">Começar</button>
+
+  <div id="mensagem"></div>
+
+  <script>
+    function jogar() {
+      const numeroSecreto = Math.floor(Math.random() * 100) + 1;
+      let tentativas = 0;
+      let palpite;
+      const mensagem = document.getElementById('mensagem');
+
+      do {
+        palpite = prompt("Digite seu palpite (1-100):");
+        if (palpite === null) { // Usuário cancelou
+          mensagem.textContent = "Jogo cancelado.";
+          return;
+        }
+
+        palpite = Number(palpite);
+        if (isNaN(palpite) || palpite < 1 || palpite > 100) {
+          alert("Por favor, digite um número válido entre 1 e 100.");
+          continue; // Pede o palpite de novo sem contar a tentativa
+        }
+
+        tentativas++;
+
+        if (palpite > numeroSecreto) {
+          alert("Muito alto!");
+        } else if (palpite < numeroSecreto) {
+          alert("Muito baixo!");
+        }
+
+      } while (palpite !== numeroSecreto);
+
+      mensagem.textContent = `Parabéns! Você acertou o número ${numeroSecreto} em ${tentativas} tentativas.`;
+    }
+  </script>
+
+</body>
+</html>
