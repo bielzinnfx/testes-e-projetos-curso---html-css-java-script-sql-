@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabuada</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Tabuada de 1 a 10</h2>
+
+  <input type="number" id="numero" placeholder="Digite um número">
+  <button onclick="gerarTabuada()">Gerar Tabuada</button>
+
+  <div id="tabela-container"></div>
+
+  <script>
+    function gerarTabuada() {
+      const numero = parseInt(document.getElementById('numero').value);
+      const container = document.getElementById('tabela-container');
+
+      if (isNaN(numero)) {
+        container.innerHTML = "<p>Por favor, digite um número válido.</p>";
+        return;
+      }
+
+      let i = 1;
+      let html = "<table><tr><th>Expressão</th><th>Resultado</th></tr>";
+
+      while (i <= 10) {
+        html += `<tr><td>${numero} x ${i}</td><td>${numero * i}</td></tr>`;
+        i++;
+      }
+
+      html += "</table>";
+      container.innerHTML = html;
+    }
+  </script>
+
+</body>
+</html>
