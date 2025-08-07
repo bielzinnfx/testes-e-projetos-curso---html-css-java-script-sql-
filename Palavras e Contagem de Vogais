@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Palavras e Vogais</title>
+  <style>
+    .container {
+      display: flex;
+      gap: 40px;
+      margin-top: 20px;
+    }
+    .coluna {
+      flex: 1;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Palavras e Contagem de Vogais</h2>
+
+  <button onclick="processar()">Mostrar resultados</button>
+
+  <div class="container">
+    <div class="coluna">
+      <h3>Palavras com mais de 5 letras</h3>
+      <ul id="lista-palavras"></ul>
+    </div>
+    <div class="coluna">
+      <h3>Quantidade de vogais por palavra</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Palavra</th>
+            <th>Vogais</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-vogais"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const palavras = [
+      "abacaxi", "carro", "elefante", "amigo", "borboleta",
+      "janela", "computador", "uva", "árvore", "floresta",
+      "banana", "gato", "telefone", "cachorro", "montanha"
+    ];
+
+    function contarVogais(palavra) {
+      const vogais = "aeiouáéíóúâêîôûãõàèìòù";
+      let contador = 0;
+      for (const letra of palavra.toLowerCase()) {
+        if (vogais.includes(letra)) {
+          contador++;
+        }
+      }
+      return contador;
+    }
+
+    function processar() {
+      const listaPalavras = document.getElementById('lista-palavras');
+      const tabelaVogais = document.getElementById('tabela-vogais');
+
+      listaPalavras.innerHTML = '';
+      tabelaVogais.innerHTML = '';
+
+      for (const palavra of palavras) {
+        // Filtrar palavras com mais de 5 letras
+        if (palavra.length > 5) {
+          const li = document.createElement('li');
+          li.textContent = palavra;
+          listaPalavras.appendChild(li);
+        }
+
+        // Contar vogais e mostrar na tabela
+        const tr = document.createElement('tr');
+        const tdPalavra = document.createElement('td');
+        const tdVogais = document.createElement('td');
+
+        tdPalavra.textContent = palavra;
+        tdVogais.textContent = contarVogais(palavra);
+
+        tr.appendChild(tdPalavra);
+        tr.appendChild(tdVogais);
+        tabelaVogais.appendChild(tr);
+      }
+    }
+  </script>
+
+</body>
+</html>
