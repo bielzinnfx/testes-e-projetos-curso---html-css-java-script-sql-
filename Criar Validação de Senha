@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Validação de Senha</title>
+  <style>
+    #mensagem {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .erro {
+      color: red;
+    }
+    .sucesso {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Validação de Senha</h2>
+
+  <label for="senha">Digite sua senha:</label><br>
+  <input type="password" id="senha" />
+  <button onclick="validarSenha()">Validar</button>
+
+  <div id="mensagem"></div>
+
+  <script>
+    function validarSenha() {
+      const senha = document.getElementById('senha').value;
+      const mensagem = document.getElementById('mensagem');
+
+      if (senha.length < 8) {
+        mensagem.textContent = "Erro: a senha deve ter no mínimo 8 caracteres.";
+        mensagem.className = 'erro';
+      } else if (!/[0-9]/.test(senha)) {
+        mensagem.textContent = "Erro: a senha deve conter pelo menos 1 número.";
+        mensagem.className = 'erro';
+      } else if (!/[A-Z]/.test(senha)) {
+        mensagem.textContent = "Erro: a senha deve conter pelo menos 1 letra maiúscula.";
+        mensagem.className = 'erro';
+      } else {
+        mensagem.textContent = "Senha válida!";
+        mensagem.className = 'sucesso';
+      }
+    }
+  </script>
+
+</body>
+</html>
