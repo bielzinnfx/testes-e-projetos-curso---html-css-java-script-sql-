@@ -1,0 +1,227 @@
+contem 3 paginas do web sites, logo abaixo temos os 3 codigos de cada pagina:
+
+pag 1 
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imóveis - Lar Ideal</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <header>
+    <h1>Lar Ideal Imóveis</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre Nós</a></li>
+        <li><a href="imoveis.html">Imóveis</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Imóveis Disponíveis</h2>
+
+    <section class="categoria">
+      <h3>Para Venda</h3>
+      <div class="grid-imoveis">
+        <div class="imovel">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Casa Jardim" />
+          <h4>Casa Jardim</h4>
+          <p>Casa - SP</p>
+          <p>R$ 450.000</p>
+        </div>
+        <div class="imovel">
+          <img src="https://www.luxuryproperties.com.br/exportacao/fotos/20211209T2230230300-119270253.jpg" alt="Casa Vista Verde" />
+
+          <h4>Casa Vista Verde</h4>
+          <p>Casa - SP</p>
+          <p>R$ 600.000</p>
+        </div>
+        <div class="imovel">
+          <img src="https://i.pinimg.com/1200x/ae/e0/ba/aee0ba5b243e186398c79c4c6e3955fc.jpg" alt="Apartamento Top" />
+          <h4>Apartamento Top</h4>
+          <p>Apartamento - SP</p>
+          <p>R$ 520.000</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="categoria">
+      <h3>Para Aluguel</h3>
+      <div class="grid-imoveis">
+        <div class="imovel">
+          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914" alt="Ap Central" />
+          <h4>Ap Central</h4>
+          <p>Apartamento - SP</p>
+          <p>R$ 2.000/mês</p>
+        </div>
+        <div class="imovel">
+          <img src="https://images.unsplash.com/photo-1599423300746-b62533397364" alt="Casa Simples" />
+          <h4>Casa Simples</h4>
+          <p>Casa - SP</p>
+          <p>R$ 1.800/mês</p>
+        </div>
+        <div class="imovel">
+          <img src="https://product-hub-prd.madeiramadeira.com.br/658854795/images/dc8e508e-1b9e-4d26-9575-18e9a3fa8f8594f5475estandardresolution.jpg?width=700&canvas=1:1&bg-color=FFF" alt="Studio" />
+          <h4>Studio</h4>
+          <p>Apartamento - SP</p>
+          <p>R$ 1.200/mês</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Telefone: (11) 1234-5678 | Email: contato@larideal.com.br</p>
+    <p>Endereço: Rua Imobiliária, 123 - São Paulo/SP</p>
+  </footer>
+</body>
+</html>
+
+
+pag 2:
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nós - Lar Ideal</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Lar Ideal Imóveis</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre Nós</a></li>
+        <li><a href="imoveis.html">Imóveis</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Nossa História</h2>
+      <p>Fundada em 2010, a Lar Ideal cresceu com a missão de ajudar pessoas a realizarem o sonho da casa própria.</p>
+    </section>
+
+    <section>
+      <h2>Missão, Visão e Valores</h2>
+      <ul>
+        <li><strong>Missão:</strong> Conectar pessoas a lares com transparência.</li>
+        <li><strong>Visão:</strong> Ser referência no mercado imobiliário brasileiro.</li>
+        <li><strong>Valores:</strong> Ética, compromisso e inovação.</li>
+      </ul>
+    </section>
+
+    <section class="equipe">
+      <h2>Nossa Equipe</h2>
+      <div class="grid-equipe">
+        <div class="corretor"><img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="Corretor 1"><p>João Silva</p></div>
+        <div class="corretor"><img src="https://cdn-icons-png.flaticon.com/512/2922/2922656.png" alt="Corretor 2"><p>Maria Oliveira</p></div>
+        <div class="corretor"><img src="https://cdn-icons-png.flaticon.com/512/2922/2922561.png" alt="Corretor 3"><p>Pedro Souza</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Telefone: (11) 1234-5678 | Email: contato@larideal.com.br</p>
+    <p>Endereço: Rua Imobiliária, 123 - São Paulo/SP</p>
+  </footer>
+</body>
+</html>
+
+pag 3:
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imóveis - Lar Ideal</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <header>
+    <h1>Lar Ideal Imóveis</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre Nós</a></li>
+        <li><a href="imoveis.html">Imóveis</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Imóveis Disponíveis</h2>
+
+    <section class="categoria">
+      <h3>Para Venda</h3>
+      <div class="grid-imoveis">
+        <div class="imovel">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Casa Jardim" />
+          <h4>Casa Jardim</h4>
+          <p>Casa - SP</p>
+          <p>R$ 450.000</p>
+        </div>
+        <div class="imovel">
+          <img src="https://www.luxuryproperties.com.br/exportacao/fotos/20211209T2230230300-119270253.jpg" alt="Casa Vista Verde" />
+
+          <h4>Casa Vista Verde</h4>
+          <p>Casa - SP</p>
+          <p>R$ 600.000</p>
+        </div>
+        <div class="imovel">
+          <img src="https://i.pinimg.com/1200x/ae/e0/ba/aee0ba5b243e186398c79c4c6e3955fc.jpg" alt="Apartamento Top" />
+          <h4>Apartamento Top</h4>
+          <p>Apartamento - SP</p>
+          <p>R$ 520.000</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="categoria">
+      <h3>Para Aluguel</h3>
+      <div class="grid-imoveis">
+        <div class="imovel">
+          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914" alt="Ap Central" />
+          <h4>Ap Central</h4>
+          <p>Apartamento - SP</p>
+          <p>R$ 2.000/mês</p>
+        </div>
+        <div class="imovel">
+          <img src="https://images.unsplash.com/photo-1599423300746-b62533397364" alt="Casa Simples" />
+          <h4>Casa Simples</h4>
+          <p>Casa - SP</p>
+          <p>R$ 1.800/mês</p>
+        </div>
+        <div class="imovel">
+          <img src="https://product-hub-prd.madeiramadeira.com.br/658854795/images/dc8e508e-1b9e-4d26-9575-18e9a3fa8f8594f5475estandardresolution.jpg?width=700&canvas=1:1&bg-color=FFF" alt="Studio" />
+          <h4>Studio</h4>
+          <p>Apartamento - SP</p>
+          <p>R$ 1.200/mês</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Telefone: (11) 1234-5678 | Email: contato@larideal.com.br</p>
+    <p>Endereço: Rua Imobiliária, 123 - São Paulo/SP</p>
+  </footer>
+</body>
+</html>
