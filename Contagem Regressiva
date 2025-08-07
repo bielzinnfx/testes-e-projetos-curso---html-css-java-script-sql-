@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Loop WHILE</title>
+</head>
+<body>
+ <h1>Contagem Regressiva</h1>
+ <input type="number" id="inicioInput" placeholder="Digite um númer
+o">
+ <button onclick="contagemRegressiva()">Iniciar</button>
+ <div id="contagemOutput"></div>
+ <script>
+ function contagemRegressiva() {
+ const inicio = parseInt(document.getElementById('inicioInp
+ut').value);
+ const output = document.getElementById('contagemOutput');
+ output.innerHTML = '';
+
+ let contador = inicio;
+
+ // Estrutura de controle while
+ while (contador >= 0) {
+ const paragrafo = document.createElement('p');
+ paragrafo.textContent = contador;
+ output.appendChild(paragrafo);
+ contador--;
+ }
+
+ const fim = document.createElement('p');
+ fim.textContent = "FIM!";
+ fim.style.fontWeight = "bold";
+ output.appendChild(fim);
+ }
+ </script>
+</body>
+</html>
